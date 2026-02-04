@@ -1,21 +1,42 @@
+import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import DashboardHeader from '../components/DashboardHeader';
+import ProjectList from '../components/ProjectList';
+import ActivityFeed from '../components/ActivityFeed';
 
 function Dashboard() {
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const handleRefresh = () => {
+    setRefreshKey(prev => prev + 1);
+  };
 
   return (
     <div className="page-container">
-      <h1>Dashboard</h1>
-      <p>Welcome, {user?.username}!</p>
-      {user?.dashboardNickname && <p>"{user.dashboardNickname}"</p>}
+      <DashboardHeader />
       
-      <button onClick={logout}>Logout</button>
+      <button 
+        onClick={logout}
+        style={{ marginBottom: '20px' }}
+      >
+        Logout
+      </button>
 
-      <h2>Your Projects</h2>
-      <p>Projects will go here...</p>
-
-      <h2>Recent Activity</h2>
-      <p>Activity feed will go here...</p>
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: '2fr 1fr', 
+        gap: '30px',
+        marginTop: '20px'
+      }}>
+        <div>
+          <ProjectList onRefresh={handleRefresh} />
+        </div>
+        
+        <div>
+          <ActivityFeed refresh={refreshKey} />
+        </div>
+      </div>
     </div>
   );
 }

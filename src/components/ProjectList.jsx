@@ -4,6 +4,7 @@ import ProjectForm from './ProjectForm';
 import EditProjectForm from './EditProjectForm';
 import TaskList from './TaskList';
 import ProjectFilter from './ProjectFilter';
+import { Link } from 'react-router-dom';
 
 function ProjectList({ onRefresh }) {
   const [projects, setProjects] = useState([]);
@@ -92,7 +93,14 @@ function ProjectList({ onRefresh }) {
                 alignItems: 'start'
               }}>
                 <div style={{ flex: 1 }}>
-                  <h3>{project.name}</h3>
+                  <h3>
+                    <Link 
+                     to={`/projects/${project._id}`}
+                     style={{ color: 'inherit', textDecoration: 'none' }}
+                  >
+                     {project.name}
+                    </Link>
+                  </h3>
                   <p>{project.description}</p>
                   <p>
                     <strong>Status:</strong> {project.status}

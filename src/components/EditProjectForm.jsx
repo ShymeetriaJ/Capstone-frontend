@@ -32,8 +32,12 @@ function EditProjectForm({ project, onClose, onUpdate }) {
     setLoading(true);
     try {
       await deleteProject(project._id);
-      onUpdate();
-      onClose();
+      if (onDelete) {
+        onDelete();  
+      } else {
+        onUpdate();
+        onClose();
+      }
     } catch (err) {
       alert('Failed to delete project');
       setLoading(false);

@@ -91,7 +91,7 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
-/* Simple page styling */
+
 .page-container {
   max-width: 600px;
   margin: 50px auto;
@@ -141,4 +141,20 @@ textarea:not([rows]) {
   color: #c62828;
   border-radius: 4px;
   margin-bottom: 15px;
+}
+/* red light */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(244, 67, 54, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(244, 67, 54, 0);
+  }
+}
+
+.pulse-red {
+  animation: pulse 2s infinite;
 }

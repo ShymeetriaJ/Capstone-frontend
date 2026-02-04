@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { getProjects } from '../services/projectService';
 import ProjectForm from './ProjectForm';
 import EditProjectForm from './EditProjectForm';
+import TaskList from './TaskList';
+import ProjectFilter from './ProjectFilter';
 
 function ProjectList({ onRefresh }) {
   const [projects, setProjects] = useState([]);
@@ -9,14 +11,25 @@ function ProjectList({ onRefresh }) {
   const [error, setError] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [editingProject, setEditingProject] = useState(null);
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
     loadProjects();
-  }, []);
+  }, [filter]);
 
   const loadProjects = async () => {
     try {
-      const data = await getProjects();
+      let filterParams = {};
+
+      if (filter === 'overdue') {
+        filterParams.overdue = true;
+      } else if (filter === 'dueSoon') {
+        filterParams.dueSoon = true; 
+      } else if (filter) {
+        filterParams.status = filter;
+      }
+
+      const data = await getProjects(filterParams);
       setProjects(data);
     } catch (err) {
       setError('Failed to load projects');
@@ -53,12 +66,14 @@ function ProjectList({ onRefresh }) {
         </button>
       </div>
 
+      <ProjectFilter currentFilter={filter} onFilterChange={setFilter} />
+
       {error && <p className="error">{error}</p>}
 
       {showForm && <ProjectForm onProjectCreated={handleProjectCreated} />}
 
       {projects.length === 0 && !showForm ? (
-        <p>No projects yet. Create your first project!</p>
+        <p>No projects yet.</p>
       ) : (
         <div>
           {projects.map(project => (
@@ -94,6 +109,7 @@ function ProjectList({ onRefresh }) {
                   Edit
                 </button>
               </div>
+              <TaskList projectId={project._id} onRefresh={onRefresh} />
             </div>
           ))}
         </div>

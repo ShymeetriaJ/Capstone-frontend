@@ -82,9 +82,9 @@ function ProjectList({ onRefresh }) {
               key={project._id}
               style={{
                 border: '1px solid #ddd',
-                padding: '15px',
-                marginBottom: '10px',
-                borderRadius: '4px'
+                padding: '20px',
+                marginBottom: '15px',
+                borderRadius: '8px'
               }}
             >
               <div style={{

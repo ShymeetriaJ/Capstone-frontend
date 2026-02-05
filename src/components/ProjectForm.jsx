@@ -41,9 +41,9 @@ function ProjectForm({ onProjectCreated }) {
   return (
     <div style={{ 
       border: '1px solid #ddd', 
-      padding: '20px', 
-      marginBottom: '20px',
-      borderRadius: '4px'
+      padding: '25px', 
+      marginBottom: '25px',
+      borderRadius: '8px'
     }}>
       <h3>Create New Project</h3>
       

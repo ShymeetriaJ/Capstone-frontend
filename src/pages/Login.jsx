@@ -28,6 +28,7 @@ function Login() {
 
   return (
     <div className="page-container">
+      <div style={{ maxWidth: '450px', margin: '0 auto' }}>
       <h1>Login</h1>
 
       {error && <p className="error">{error}</p>}
@@ -61,6 +62,7 @@ function Login() {
       <p>
         Don't have an account? <Link to="/register">Register</Link>
       </p>
+    </div>
     </div>
   );
 }

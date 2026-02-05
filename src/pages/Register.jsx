@@ -29,6 +29,7 @@ function Register() {
 
   return (
     <div className="page-container">
+      <div style={{ maxWidth: '450px', margin: '0 auto' }}>
       <h1>Register</h1>
 
       {error && <p className="error">{error}</p>}
@@ -73,6 +74,7 @@ function Register() {
         Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
+  </div>
   );
 }
 

@@ -158,3 +158,15 @@ textarea:not([rows]) {
 .pulse-red {
   animation: pulse 2s infinite;
 }
+  /* dark mode */
+body {
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* dark mode for container */
+.page-container {
+  max-width: 1400px;  
+  margin: 20px auto;
+  padding: 30px;
+}

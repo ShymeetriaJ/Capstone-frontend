@@ -42,7 +42,7 @@ function ProjectDetail() {
     <div className="page-container">
       <Link to="/dashboard">← Back to Dashboard</Link>
 
-      <div style={{ border: '2px solid #1976d2', padding: '20px', margin: '20px 0', borderRadius: '8px' }}>
+      <div style={{ border: '2px solid #1976d2', padding: '25px', margin: '20px 0', borderRadius: '8px', maxWidth: '900px'}}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
             <h1>{project.name}</h1>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import DashboardHeader from '../components/DashboardHeader';
 import ProjectList from '../components/ProjectList';
 import ActivityFeed from '../components/ActivityFeed';
+import './Dashboard.css';
 
 function Dashboard() {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -13,18 +14,13 @@ function Dashboard() {
   return (
     <div className="page-container">
       <DashboardHeader />
-
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: '1fr 400px', 
-        gap: '40px',
-        marginTop: '30px'
-      }}>
-        <div>
+      
+      <div className="dashboard-grid">
+        <div className="dashboard-main">
           <ProjectList onRefresh={handleRefresh} />
         </div>
         
-        <div>
+        <div className="dashboard-sidebar">
           <ActivityFeed refresh={refreshKey} />
         </div>
       </div>

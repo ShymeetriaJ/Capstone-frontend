@@ -13,6 +13,7 @@ function EditTaskForm({ task, projectId, onClose, onUpdate }) {
   const handleUpdate = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
       await updateTask(projectId, task._id, { title, description, status, dueDate });
       onUpdate();
@@ -37,77 +38,111 @@ function EditTaskForm({ task, projectId, onClose, onUpdate }) {
   };
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }}>
-      <div style={{
-        backgroundColor: 'white',
-        padding: '20px',
-        borderRadius: '8px',
-        width: '90%',
-        maxWidth: '400px'
-      }}>
-        <h3>Edit Task</h3>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <h3 style={{ margin: 0, color: 'var(--text-primary)' }}>Edit Task</h3>
+          <button className="modal-close" onClick={onClose} disabled={loading}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+          </button>
+        </div>
 
-        <form onSubmit={handleUpdate}>
-          <div>
-            <label>Title:</label>
+        <form onSubmit={handleUpdate} className="modal-form">
+          <div className="form-group">
+            <label htmlFor="task-title" style={{ 
+              fontWeight: '500', 
+              color: 'var(--text-primary)',
+              marginBottom: '8px',
+              display: 'block'
+            }}>
+              Title:
+            </label>
             <input
+              id="task-title"
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
+              className="form-input"
             />
           </div>
 
-          <div>
-            <label>Description:</label>
+          <div className="form-group">
+            <label htmlFor="task-description" style={{ 
+              fontWeight: '500', 
+              color: 'var(--text-primary)',
+              marginBottom: '8px',
+              display: 'block'
+            }}>
+              Description:
+            </label>
             <textarea
+              id="task-description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
-              rows="2"
+              rows="3"
+              className="form-textarea"
             />
           </div>
 
-          <div>
-            <label>Status:</label>
-            <select value={status} onChange={(e) => setStatus(e.target.value)}>
-              <option value="To Do">To Do</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Completed">Completed</option>
-            </select>
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="task-status" style={{ 
+                fontWeight: '500', 
+                color: 'var(--text-primary)',
+                marginBottom: '8px',
+                display: 'block'
+              }}>
+                Status:
+              </label>
+              <select
+                id="task-status"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                className="form-select"
+              >
+                <option value="To Do">To Do</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="task-duedate" style={{ 
+                fontWeight: '500', 
+                color: 'var(--text-primary)',
+                marginBottom: '8px',
+                display: 'block'
+              }}>
+                Due Date:
+              </label>
+              <input
+                id="task-duedate"
+                type="date"
+                value={dueDate}
+                onChange={(e) => setDueDate(e.target.value)}
+                className="form-input"
+              />
+            </div>
           </div>
 
-          <div>
-            <label>Due Date:</label>
-            <input
-              type="date"
-              value={dueDate}
-              onChange={(e) => setDueDate(e.target.value)}
-            />
-          </div>
-
-          <div style={{ marginTop: '15px' }}>
-            <button type="submit" disabled={loading}>
-              {loading ? 'Saving...' : 'Save'}
-            </button>
-            <button type="button" onClick={onClose} disabled={loading}>
-              Cancel
-            </button>
+          <div className="modal-actions">
+            <div className="actions-left">
+              <button type="submit" disabled={loading} className="btn-primary">
+                {loading ? 'Saving...' : 'Save'}
+              </button>
+              <button type="button" onClick={onClose} disabled={loading} className="btn-secondary">
+                Cancel
+              </button>
+            </div>
             <button
               type="button"
               onClick={handleDelete}
               disabled={loading}
-              style={{ backgroundColor: '#d32f2f', color: 'white' }}
+              className="btn-danger"
             >
               Delete
             </button>
@@ -117,5 +152,7 @@ function EditTaskForm({ task, projectId, onClose, onUpdate }) {
     </div>
   );
 }
+
+
 
 export default EditTaskForm;

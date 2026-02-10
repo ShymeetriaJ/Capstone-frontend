@@ -1,0 +1,28 @@
+.project-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .project-filter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .filter-buttons {
+    width: 100%;
+  }
+  
+  .filter-buttons button {
+    flex: 1 1 calc(50% - 8px); /* Two buttons per row on mobile */
+    min-width: 100px;
+  }
+}

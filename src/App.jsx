@@ -27,15 +27,7 @@ function ProtectedRoute({ children }) {
 }
 
 function App() {
-  const { colors } = useTheme();
-
   return (
-    <div style={{
-      minHeight: '100vh',
-      backgroundColor: colors.background,
-      color: colors.text,
-      transition: 'all 0.3s ease'
-    }}>
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -59,7 +51,6 @@ function App() {
           <Route path="/" element={<Navigate to="/dashboard" />} />
         </Routes>
       </Router>
-    </div>
   );
 }
 

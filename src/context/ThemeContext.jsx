@@ -12,6 +12,14 @@ export const ThemeProvider = ({ children }) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+  }, [isDarkMode]); 
+
   const toggleTheme = () => {
     setIsDarkMode(prev => {
       const newMode = !prev;

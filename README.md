@@ -1,129 +1,288 @@
-# Project Title: 
-Pro-Tasker Full-Stack MERN Application
+# Pro-Tasker
 
-# Date Completed: 
-February 4, 2026
+A full-stack project management application built with the MERN stack (MongoDB, Express, React, Node.js). Pro-Tasker helps users organize projects and tasks with real-time activity tracking, dynamic filtering, and intelligent due date warnings.
 
-# Project Description: 
-This is a full-stack project management application built with the MERN stack. The MERN state includes MongoDB, Express, React and Node.js. Pro-Tasker is designed to help users organize their projects and tasks with features like activity tracking, dynamic filtering and visual due date warnings.
+![Pro-Tasker Dashboard](screenshot-placeholder.png)
 
- # Project Features:
-User Authentication     - Secure registration and login with JWT tokens
-Project Management      - Create, read, update, and delete projects
-Task Management         - Organize tasks within projects with full CRUD operations
-Activity Tracking       - Real-time feed of all user actions
-Dynamic Filtering       - Filter projects and tasks by status and due dates
-Visual Indicators       - Red pulsing light for tasks due within 3 days
-Dark/Light Mode         - Toggle between themes with persistent preference
-Dashboard Customization - Personalized dashboard nickname
-Responsive Navigation** - Back/forward buttons and breadcrumb navigation
+ **Live Demo:** [https://capstone-frontend-yvqw.onrender.com](https://capstone-frontend-yvqw.onrender.com)
 
-# Technologies Used
-Frontend application:
--React 19.2.0
--React Router DOM 7.13.0
--Axios
--Vite 
+---
 
-Backend application:
--Node.js
--Express.js
--MongoDB with Mongoose
--JSON Web Tokens (JWT)
--Bcrypt (password hashing)
--CORS
+## Features
 
-# Prerequisites
-Before running this application, make sure you have the following installed:
+- **User Authentication** - Secure JWT-based registration and login with bcrypt password hashing
+- **Project Management** - Full CRUD operations for organizing projects
+- **Task Management** - Nested task creation within projects with complete lifecycle management
+- **Activity Tracking** - Real-time audit trail of all user actions
+- **Smart Filtering** - Dynamic filtering by status (To Do, In Progress, Completed), overdue items, and due soon
+- **Visual Indicators** - Red pulsing notification for tasks due within 3 days
+- **Dark/Light Mode** - Theme toggle with localStorage persistence
+- **Responsive Design** - Mobile-first approach with seamless experience across all devices
+- **Dashboard Customization** - Personalized nickname display
 
-- Node.js - (https://nodejs.org/) (v16 or higher)
-- MongoDB - (https://www.mongodb.com/) (running locally or MongoDB Atlas account)
-- npm package manager
+---
 
-# Authentication
+## Tech Stack
 
-This application uses **JWT (JSON Web Tokens)** for authentication. After logging in, the token is stored in `localStorage` and automatically included in all API requests via axios interceptors.
+### Frontend
+- React 19.0.0
+- React Router DOM 7.13.0
+- Axios for HTTP requests
+- Vite for build tooling
+- Context API for state management
 
-# Links, Usage, and Instructions:
-1. Clone the repository
-git clone 
--cd 
+### Backend
+- Node.js with Express.js
+- MongoDB with Mongoose ODM
+- JSON Web Tokens (JWT) for authentication
+- Bcrypt for password hashing
+- CORS for cross-origin resource sharing
 
-2. Backend Setup
-Navigate to the backend folder
-- cd backend
-3. Install the dependencies
-- npm install
-4. Create a .env file
-- touch .env
-5. Add the following to your `frontend/.env` file: VITE_API_URL=http://localhost:3000
-6. Start the frontend server
--npm run dev
-7.Access the frontend application
--Open your browser and navigate to http://local:3001
-8. Register a new account and start managing your projects.
+### Deployment
+- Frontend: Render (Static Site)
+- Backend: Render (Web Service)
+- Database: MongoDB Atlas
 
+---
 
-# My process:
-My process for this project started with thinking about all of the prior task managers that I had created earlier in the course and the features that I know I could easily incorporate because I had previous knowledge of them. I pretty much had a sold backend application to start with but I knew my frontend would take the most work based on the features I wanted to incorporate. I got some inspiration from the Slack application that we use for class. I thought about how a person like me who is a procrastinator, could benefit from a task manager. That helped me think about adding the alert indicator, activity tracker, and the dynamic filtering. I only had to add one more model, one more controller, and one more route to my backend. I started with the backend and I'm glad that I did. I did not do a great job of structuring out my frontend application. I underestimated how many components I would need to accomplish the user interface that I wanted. I intially planned out 6 components but I had forgot about the editing, the activity tracking, and the navigation bar for the application. This was extremely frustrating with the time constrainsts that I already had. 
+## Getting Started
 
-# Author    
-Jai Jones
+### Prerequisites
 
+- Node.js (v16 or higher)
+- MongoDB (local installation or MongoDB Atlas account)
+- npm or yarn package manager
 
-# Snippets
--Bryan Santos's CSS reset
-/* CSS RESET */
-*::before,
-*::after {
-  box-sizing: border-box;
-}
--Stackoverflo solutions
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.7);
-  }
-  /* ... */
-}
--Veljko llic
-  const accessToken = localStorage.getItem('accessToken');
-  if (accessToken) {
-    request.headers['Authorization'] = `Bearer ${accessToken}`; }
-  
-# Ackowledgments and Resources:
-CSS RESET-Bryan Santos
-https://stackoverflow.com/questions/47437562/using-css-box-shadow-for-pulse-animation-eats-considerable-cpu
-https://www.geeksforgeeks.org/javascript/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/
-https://medium.com/@velja/token-refresh-with-axios-interceptors-for-a-seamless-authentication-experience-854b06064bde
-https://react.dev/reference/react/useState
-https://react.dev/reference/react/useCallback
-https://react.dev/reference/react/useEffect
-https://react.dev/reference/react/apis
-https://www.geeksforgeeks.org/reactjs/how-to-create-a-food-recipe-app-using-reactjs/
-https://matthieubertrand5.medium.com/build-a-recipe-app-fetching-api-using-react-443658f38064
-https://devhints.io/reac
-stackoverflow.com/sort-an-array
-Discord group discussion 
+### Installation
 
-# Troubleshooting:
-Frontend Issues
-Problem: "Network Error" when trying to login/register
-- Verify backend is running on http://localhost:3000
-- Check frontend/.env has correct API URL: VITE_API_URL=http://localhost:3000
-- Restart frontend dev server after changing .env
-- Check browser console for CORS errors
+1. **Clone the repository**
+```bash
+   git clone https://github.com/YOUR_USERNAME/protasker.git
+   cd protasker
+```
 
-Problem: CORS Error
-Access to XMLHttpRequest blocked by CORS policy
-- Ensure cors package is installed in backend: npm install cors
-- Verify app.use(cors()) is in backend/server.js BEFORE routes
+2. **Backend Setup**
+```bash
+   cd backend
+   npm install
+```
+
+   Create a `.env` file in the `backend` directory:
+```env
+   MONGO_URI=mongodb://localhost:27017/protasker
+   JWT_SECRET=your_secure_random_secret_key
+   PORT=3000
+```
+
+   Start the backend server:
+```bash
+   npm start
+```
+
+3. **Frontend Setup**
+```bash
+   cd frontend
+   npm install
+```
+
+   Create a `.env` file in the `frontend` directory:
+```env
+   VITE_API_URL=http://localhost:3000
+```
+
+   Start the development server:
+```bash
+   npm run dev
+```
+
+4. **Access the application**
+   - Frontend: `http://localhost:3001`
+   - Backend API: `http://localhost:3000`
+
+---
+
+## 📡 API Endpoints
+
+### Authentication
+- `POST /api/users/register` - Register new user
+- `POST /api/users/login` - Login user
+- `GET /api/users/profile` - Get user profile (protected)
+- `PUT /api/users/nickname` - Update dashboard nickname (protected)
+
+### Projects
+- `GET /api/projects` - Get all projects with optional filters
+- `POST /api/projects` - Create new project (protected)
+- `GET /api/projects/:id` - Get project by ID (protected)
+- `PUT /api/projects/:id` - Update project (protected)
+- `DELETE /api/projects/:id` - Delete project (protected)
+
+### Tasks
+- `GET /api/projects/:projectId/tasks` - Get all tasks for a project
+- `POST /api/projects/:projectId/tasks` - Create new task (protected)
+- `PUT /api/projects/:projectId/tasks/:taskId` - Update task (protected)
+- `DELETE /api/projects/:projectId/tasks/:taskId` - Delete task (protected)
+
+### Activities
+- `GET /api/activities/recent?limit=5` - Get recent activities (protected)
+
+---
+
+## 🔐 Authentication
+
+This application uses JWT (JSON Web Tokens) for authentication. After successful login, the token is stored in `localStorage` and automatically included in all subsequent API requests via Axios interceptors.
+
+---
+
+## 📁 Project Structure
+```
+protasker/
+├── backend/
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   ├── projectController.js
+│   │   ├── taskController.js
+│   │   └── activityController.js
+│   ├── models/
+│   │   ├── User.js
+│   │   ├── Project.js
+│   │   ├── Task.js
+│   │   └── Activity.js
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   ├── projectRoutes.js
+│   │   ├── taskRoutes.js
+│   │   └── activityRoutes.js
+│   ├── utils/
+│   │   └── authMiddleware.js
+│   ├── .env
+│   └── server.js
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   ├── context/
+    │   ├── pages/
+    │   ├── services/
+    │   └── styles/
+    ├── .env
+    └── vite.config.js
+```
+
+---
+
+## 🎨 Key Features Explained
+
+### Red Pulsing Indicator
+Tasks due within 3 days display a pulsing red dot using CSS animations and date calculations with `Math.ceil()` to ensure proper day counting.
+
+### Activity Tracking
+Every CRUD operation automatically creates an Activity record, providing users with a complete audit trail. Activities persist even after the associated project or task is deleted.
+
+### Smart Filtering
+Users can filter projects and tasks by:
+- Status (To Do, In Progress, Completed)
+- Overdue items
+- Items due soon (within 3 days)
+
+---
+
+## 🐛 Troubleshooting
+
+### Backend Issues
+
+**Problem:** Cannot connect to MongoDB
+- Verify MongoDB is running: `mongod`
+- Check `MONGO_URI` in `.env` is correct
+- For MongoDB Atlas, ensure IP whitelist includes your current IP
+
+**Problem:** Port already in use
+- Kill the process using port 3000: `lsof -ti:3000 | xargs kill -9`
+- Or change `PORT` in `.env`
+
+### Frontend Issues
+
+**Problem:** Network Error when making API requests
+- Verify backend is running on `http://localhost:3000`
+- Check `VITE_API_URL` in `frontend/.env`
+- Restart frontend dev server after changing `.env`
+
+**Problem:** CORS Error
+- Ensure `cors` package is installed in backend
+- Verify `app.use(cors())` is in `server.js` before routes
 - Restart backend server
 
-Backend Issues
-Problem: "Cannot connect to MongoDB"
+---
 
-Error: MongooseServerSelectionError: connect ECONNREFUSED
+## 🚀 Deployment
 
-- Ensure MongoDB is running locally: mongod or brew services start mongodb-community
-- Check your MONGO_URI in .env is correct
-- For MongoDB Atlas, verify IP whitelist includes your current IP
+### Backend (Render)
+1. Create a new Web Service on Render
+2. Connect your GitHub repository
+3. Set environment variables:
+   - `MONGO_URI`: Your MongoDB Atlas connection string
+   - `JWT_SECRET`: Secure random string
+   - `PORT`: 3000
+4. Deploy
+
+### Frontend (Render)
+1. Create a new Static Site on Render
+2. Connect your GitHub repository
+3. Build command: `npm run build`
+4. Publish directory: `dist`
+5. Add environment variable:
+   - `VITE_API_URL`: Your deployed backend URL
+6. Deploy
+
+---
+
+## 📸 Screenshots
+
+![Login Page](screenshot-login.png)
+![Dashboard Dark Mode](screenshot-dashboard-dark.png)
+![Dashboard Light Mode](screenshot-dashboard-light.png)
+![Mobile View](screenshot-mobile.png)
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/YOUR_USERNAME/protasker/issues).
+
+---
+
+## 📄 License
+
+This project is [MIT](LICENSE) licensed.
+
+---
+
+## 👤 Author
+
+**Jai Jones**
+
+- GitHub: [](https://github.com/YOUR_USERNAME)
+- LinkedIn: []()
+- Portfolio: []()
+
+---
+
+## 🙏 Acknowledgments
+
+- CSS Reset adapted from [Bryan Santos](https://bryansantos.com)
+- Pulsing animation inspired by [Stack Overflow community](https://stackoverflow.com/questions/47437562)
+- Date calculation patterns from [GeeksforGeeks](https://www.geeksforgeeks.org/)
+- Token refresh pattern adapted from [Veljko Ilic's Medium article](https://medium.com/@velja)
+- React documentation and best practices from [React.dev](https://react.dev)
+
+---
+
+## 📝 Notes
+
+Built as a capstone project to demonstrate full-stack development skills including:
+- RESTful API design
+- JWT authentication
+- React Context API for state management
+- Responsive design principles
+- MongoDB data modeling with nested relationships
+- Production deployment on Render
+
+---

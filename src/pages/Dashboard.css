@@ -1,0 +1,36 @@
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 32px;
+  align-items: start;
+}
+
+.dashboard-main {
+  min-width: 0; /* Prevents grid blowout */
+}
+
+.dashboard-sidebar {
+  position: sticky;
+  top: 80px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .dashboard-sidebar {
+    position: static;
+    order: -1; /* Activity feed appears above projects on mobile */
+  }
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getRecentActivities } from '../services/activityService';
+import './ActivityFeed.css';
 
 function ActivityFeed({ refresh }) {
   const [activities, setActivities] = useState([]);
@@ -35,31 +36,79 @@ function ActivityFeed({ refresh }) {
     return activityTime.toLocaleDateString();
   };
 
-  if (loading) return <p>Loading activity...</p>;
+  const getActionIcon = (action) => {
+    if (action.includes('created')) {
+      return (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+    }
+    if (action.includes('updated') || action.includes('completed')) {
+      return (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M9 11L12 14L22 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      );
+    }
+    if (action.includes('deleted')) {
+      return (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+    }
+    return null;
+  };
+
+  const getActionColor = (action) => {
+    if (action.includes('created')) return 'activity-created';
+    if (action.includes('updated') || action.includes('completed')) return 'activity-updated';
+    if (action.includes('deleted')) return 'activity-deleted';
+    return '';
+  };
+
+  if (loading) {
+    return (
+      <div className="activity-feed">
+        <h2 className="activity-title">Recent Activity</h2>
+        <div className="activity-loading">
+          <div className="spinner"></div>
+          <p>Loading activities...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <h2>Recent Activity</h2>
+    <div className="activity-feed">
+      <h2 className="activity-title">Recent Activity</h2>
       
       {activities.length === 0 ? (
-        <p>No activity yet. Start creating projects and tasks!</p>
+        <div className="activity-empty">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+            <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+          <p>No activity yet</p>
+          <span>Start creating projects and tasks!</span>
+        </div>
       ) : (
-        <ul style={{ listStyle: 'none', padding: 0 }}>
+        <div className="activity-list">
           {activities.map(activity => (
-            <li 
-              key={activity._id}
-              style={{
-                padding: '10px',
-                borderBottom: '1px solid #eee'
-              }}
-            >
-              <strong>{activity.action}</strong> "{activity.targetName}"
-              <span style={{ color: '#666', marginLeft: '10px', fontSize: '14px' }}>
-                {formatTimeAgo(activity.timestamp)}
-              </span>
-            </li>
+            <div key={activity._id} className={`activity-item ${getActionColor(activity.action)}`}>
+              <div className="activity-icon">
+                {getActionIcon(activity.action)}
+              </div>
+              <div className="activity-content">
+                <p className="activity-text">
+                  <strong>{activity.action}</strong> "{activity.targetName}"
+                </p>
+                <span className="activity-time">{formatTimeAgo(activity.timestamp)}</span>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

@@ -2,9 +2,9 @@
 
 A full-stack project management application built with the MERN stack (MongoDB, Express, React, Node.js). Pro-Tasker helps users organize projects and tasks with real-time activity tracking, dynamic filtering, and intelligent due date warnings.
 
-![Pro-Tasker Dashboard](screenshot-placeholder.png)
+![Pro-Tasker Dashboard](Dashboard_Pro-Tasker.png)
 
- **Live Demo:** [https://capstone-frontend-yvqw.onrender.com](https://capstone-frontend-yvqw.onrender.com)
+ **Live Demo:** [https://capstone-frontend-yyqw.onrender.com](https://capstone-backend-mbit.onrender.com)
 
 ---
 
@@ -57,8 +57,8 @@ A full-stack project management application built with the MERN stack (MongoDB, 
 
 1. **Clone the repository**
 ```bash
-   git clone https://github.com/YOUR_USERNAME/protasker.git
-   cd protasker
+   git clone https://github.com/ShymeetriaJ/Capstone-frontend.git
+   cd Capstone
 ```
 
 2. **Backend Setup**
@@ -101,7 +101,7 @@ A full-stack project management application built with the MERN stack (MongoDB, 
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Authentication
 - `POST /api/users/register` - Register new user
@@ -127,13 +127,13 @@ A full-stack project management application built with the MERN stack (MongoDB, 
 
 ---
 
-## 🔐 Authentication
+## Authentication
 
 This application uses JWT (JSON Web Tokens) for authentication. After successful login, the token is stored in `localStorage` and automatically included in all subsequent API requests via Axios interceptors.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 ```
 protasker/
 ├── backend/
@@ -169,7 +169,7 @@ protasker/
 
 ---
 
-## 🎨 Key Features Explained
+## Key Features Explained
 
 ### Red Pulsing Indicator
 Tasks due within 3 days display a pulsing red dot using CSS animations and date calculations with `Math.ceil()` to ensure proper day counting.
@@ -185,7 +185,7 @@ Users can filter projects and tasks by:
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Backend Issues
 
@@ -212,7 +212,7 @@ Users can filter projects and tasks by:
 
 ---
 
-## 🚀 Deployment
+## Deployment
 
 ### Backend (Render)
 1. Create a new Web Service on Render
@@ -234,40 +234,34 @@ Users can filter projects and tasks by:
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
-![Login Page](screenshot-login.png)
-![Dashboard Dark Mode](screenshot-dashboard-dark.png)
-![Dashboard Light Mode](screenshot-dashboard-light.png)
-![Mobile View](screenshot-mobile.png)
-
----
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/YOUR_USERNAME/protasker/issues).
+![Login Page](Loginpage-screenshot.png)
+![Dashboard Dark Mode](Darkmode-screenshot.png)
+![Dashboard Light Mode](%20Dashboard_Pro-Tasker.png)
+![Mobile View](Mobile-screenshot.png)
 
 ---
 
-## 📄 License
+## License
 
 This project is [MIT](LICENSE) licensed.
 
 ---
 
-## 👤 Author
+## Author
 
 **Jai Jones**
 
-- GitHub: [](https://github.com/YOUR_USERNAME)
-- LinkedIn: []()
+- GitHub: [](https://github.com/ShymeetriaJ)
+- LinkedIn: [](https://www.linkedin.com/in/sjai-jones/)
 - Portfolio: []()
 
 ---
 
 ## 🙏 Acknowledgments
 
-- CSS Reset adapted from [Bryan Santos](https://bryansantos.com)
+- CSS Reset adapted from [Bryan Santos]
 - Pulsing animation inspired by [Stack Overflow community](https://stackoverflow.com/questions/47437562)
 - Date calculation patterns from [GeeksforGeeks](https://www.geeksforgeeks.org/)
 - Token refresh pattern adapted from [Veljko Ilic's Medium article](https://medium.com/@velja)
